@@ -24,15 +24,15 @@ jobs:
     
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep aksriv03aksd0a2aksriv | wc -l`
+        namespacePresent=`kubectl get namespace | grep aksriv03aksd0a2aksriv1 | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace aksriv03aksd0a2aksriv`
+            echo `kubectl create namespace aksriv03aksd0a2aksriv1`
         fi
 
     - uses: azure/k8s-create-secret@v1
       with:
-        namespace: aksriv03aksd0a2aksriv
+        namespace: aksriv03aksd0a2aksriv1
         container-registry-url: aksriv03arc.azurecr.io
         container-registry-username: ${{ secrets.acr_aksriv03arc_username }}
         container-registry-password: ${{ secrets.acr_aksriv03arc_password }}
@@ -40,7 +40,7 @@ jobs:
        
     - uses: azure/k8s-deploy@v1
       with:
-        namespace: aksriv03aksd0a2aksriv
+        namespace: aksriv03aksd0a2aksriv1
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
