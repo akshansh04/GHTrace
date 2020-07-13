@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "aksriv03aks-5015"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "aksriv03aks-5015"
+    spec:
+      containers:
+        - name: "aksriv03aks-5015"
+          image: "aksriv03arc.azurecr.io/aksriv03aks"
+          ports:
+          - containerPort: 8080
